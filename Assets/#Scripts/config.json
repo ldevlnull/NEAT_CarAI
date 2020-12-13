@@ -1,0 +1,19 @@
+{
+  "initialPopulation": "85",
+  "mutationChance": "0.055",
+  "fitnessMultiplier": "10",
+  "bestAgentSelection": "8",
+  "worstAgentSelection": "3",
+  "numberToCrossover": "39",
+  "crossoverChance": "0.5",
+  
+  "jsonFilePath": "",
+  "goneDistanceWeight": "1.2",
+  "avgSpeedWeight": "0.85",
+  "sensorOffRoadPenalty": "0.0",
+  "maxSensorReadDistance": "40.0",
+  "optimalFitness": "400",
+  "inefficientFitness": "7",
+  "efficiencyCheckPeriodS": "10",
+  "runningTimeLimit": "600"
+}

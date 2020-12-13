@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3606ea96-94d6-4415-b6bd-490f95e6e739" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/922E40B8-3985-4AE4-8B58-681C82B707CB/24/3172779a/VehicleBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/86/c887cd8e/StreamWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/33/776aedb6/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/394C8FAE-4BA1-4DD2-A259-BD441D5BEF25/c1/9a1398e0/SortedDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/ConfigReader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/922E40B8-3985-4AE4-8B58-681C82B707CB/e4/7de3f301/VehicleBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/21/31c94e6f/Physics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/13/73edcb9f/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/fe/26a69f16/Func`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/5EAB3012-E995-4765-9091-5C6E7CEAA036/6e/6ba96c6c/UnityEngine.ParticleSystemModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/76/ec0bc006/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/c0/9bd34bcf/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/d6/8173f533/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/9b/ccce9272/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/12/c83a7779/CultureInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/e1/3c731c12/Path.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/75/e86382a2/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/1f/1a64e695/WaitForSeconds.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/11/a274fb2e/RaycastHit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/c4/2bd170c3/Array.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/51/48cdc9cc/FieldInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/1e/f3318feb/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/f6/7d2a229a/RangeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FDEE1383-DB0F-4513-9528-62F91D61E502/f2/a8643aed/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/8e/db7b7bcb/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/c8/5e6341ca/TextReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/a1/15b2584a/File.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/04/72e39659/Double.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/NeuralNetworkDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/0a/8d3ccd2a/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/11/3006a010/SerializeField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/12/ab2330be/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/SerializationHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/6d/3fe9e77e/FileMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/922E40B8-3985-4AE4-8B58-681C82B707CB/25/34d6b47c/VPVehicleToolkit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FDEE1383-DB0F-4513-9528-62F91D61E502/f8/ebe88534/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/e2/54e16cc4/Math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/922E40B8-3985-4AE4-8B58-681C82B707CB/4a/b54ead3b/VPResetVehicle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/71/dcc1591f/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/fc/3f55d4d5/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/be/78ad4475/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0EBEB27C-A6DF-45BB-AEEC-500DC98FF733/23/7c629d00/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/NewBehaviourScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Standard Assets/Utility/SimpleActivatorMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Windridge City Assets/Scripts/UIQuallityManager/UIQualityManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/WheelSensor.cs" />
+        <option value="$PROJECT_DIR$/Assets/SmartMergeRegistrator.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetworkDTO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Vehicle Physics Pro/Scenes/UI/Scripts/InputConfigDialog.cs" />
+        <option value="$PROJECT_DIR$/Assets/SampleScenes/Menu/Scripts/PauseMenu.cs" />
+        <option value="$PROJECT_DIR$/Packages/manifest.json" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/DecimalJsonConverter.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetworkDto.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/DisplayerGUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/GUI_Helper.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/GUIHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/Configurable.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/IConfigurable.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/SerializationHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/config.json" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/ConfigReader.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ktFnd3CodGSUg6GP3wrIYfROWP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="C#" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="build.tools" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/BuildOutput\NEAT_AutoPilotCousework.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\User\Documents\NEAT_AutoPilotCousework\BuildOutput" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3606ea96-94d6-4415-b6bd-490f95e6e739" name="Default Changelist" comment="" />
+      <created>1606512153879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606512153879</updated>
+      <workItem from="1606512154903" duration="113000" />
+      <workItem from="1606657457575" duration="2602000" />
+      <workItem from="1606910938725" duration="1212000" />
+      <workItem from="1607096053394" duration="17022000" />
+      <workItem from="1607119223795" duration="1000" />
+      <workItem from="1607165121860" duration="31471000" />
+      <workItem from="1607203270721" duration="1963000" />
+      <workItem from="1607206862679" duration="8631000" />
+      <workItem from="1607252449696" duration="3186000" />
+      <workItem from="1607287964893" duration="4372000" />
+      <workItem from="1607292438047" duration="568000" />
+      <workItem from="1607293026541" duration="643000" />
+      <workItem from="1607294253458" duration="222000" />
+      <workItem from="1607294510582" duration="7539000" />
+      <workItem from="1607335160244" duration="23180000" />
+      <workItem from="1607416722141" duration="27878000" />
+      <workItem from="1607592098402" duration="23672000" />
+      <workItem from="1607647469499" duration="13474000" />
+      <workItem from="1607772000606" duration="1476000" />
+      <workItem from="1607816511855" duration="735000" />
+      <workItem from="1607854702276" duration="10528000" />
+      <workItem from="1607877841184" duration="75000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="739" y="365" key="#Notifications" timestamp="1607294294238">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="739" y="365" key="#Notifications/62.0.1858.1080@62.0.1858.1080" timestamp="1607294294238" />
+    <state x="759" y="264" key="RiderGenerateDialog" timestamp="1607873007172">
+      <screen x="64" y="0" width="1856" height="1080" />
+    </state>
+    <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1607437503750" />
+    <state x="759" y="264" key="RiderGenerateDialog/64.0.1856.1080@64.0.1856.1080" timestamp="1607873007172" />
+    <state x="494" y="185" key="SettingsEditor" timestamp="1607871062149">
+      <screen x="64" y="0" width="1856" height="1080" />
+    </state>
+    <state x="492" y="185" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1607294472746" />
+    <state x="494" y="185" key="SettingsEditor/64.0.1856.1080@64.0.1856.1080" timestamp="1607871062149" />
+    <state x="838" y="453" key="VCS.ChangelistChooser" timestamp="1607452554010">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="838" y="453" key="VCS.ChangelistChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1607452554010" />
+    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1607199801363">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1607199801363" />
+    <state x="661" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607346605011">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="661" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1607346605011" />
+    <state x="634" y="139" width="714" height="801" key="find.popup" timestamp="1607346636812">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="634" y="139" width="714" height="801" key="find.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607346636812" />
+    <state x="648" y="250" key="run.anything.popup" timestamp="1607872684200">
+      <screen x="64" y="0" width="1856" height="1080" />
+    </state>
+    <state x="647" y="250" key="run.anything.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607723867698" />
+    <state x="648" y="250" key="run.anything.popup/64.0.1856.1080@64.0.1856.1080" timestamp="1607872684200" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1607647662180">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607647662180" />
+  </component>
+</project>

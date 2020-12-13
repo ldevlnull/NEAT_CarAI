@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8002f642-ae8d-4397-8401-5e858f5844dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="6e850f77-7331-43ca-a1e4-1c0353a32e24" />
+  <component name="ProjectId" id="1lHNetJSWsoOV6XLPOON7jR5wPn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="RainbowCSV.Settings" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8002f642-ae8d-4397-8401-5e858f5844dd" name="Default Changelist" comment="" />
+      <created>1607250156460</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607250156460</updated>
+      <workItem from="1607250157715" duration="176000" />
+      <workItem from="1607503841675" duration="84000" />
+      <workItem from="1607504027464" duration="87000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="671" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607503863071">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="671" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1607503863071" />
+    <state x="492" y="185" key="SettingsEditor" timestamp="1607250271140">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="492" y="185" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1607250271140" />
+    <state x="627" y="132" key="com.intellij.database.run.actions.ShowCsvFormatsAction$ForExport" timestamp="1607250227048">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="627" y="132" key="com.intellij.database.run.actions.ShowCsvFormatsAction$ForExport/62.0.1858.1080@62.0.1858.1080" timestamp="1607250227048" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1607250264112">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607250264112" />
+  </component>
+</project>
