@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VehiclePhysics;
 using Debug = UnityEngine.Debug;
 
@@ -33,6 +33,7 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     [Header("Import Neural Network")] 
     private string _jsonFilePath;
+    private bool _isNeuralNetworkImported;
     [CanBeNull] public TextAsset jsonFile;
 
     [Header("Neural Network")] 
@@ -52,9 +53,7 @@ public class CarAI : MonoBehaviour, IConfigurable
     [SerializeField] private Transform sensorFLCPosition;
     [SerializeField] private Transform sensorFRCPosition;
 
-    private static readonly Dictionary<SensorType, Transform> SensorByTypeResolver =
-        new Dictionary<SensorType, Transform>();
-    
+    private static readonly Dictionary<SensorType, Transform> SensorByTypeResolver = new Dictionary<SensorType, Transform>();
     private static readonly Dictionary<SensorType, Func<float>> SensorReadActionByTypeResolver = new Dictionary<SensorType, Func<float>>();
 
     [Header("Control")] 
@@ -70,12 +69,12 @@ public class CarAI : MonoBehaviour, IConfigurable
     [SerializeField] private long efficiencyCheckPeriodS;
     [SerializeField] private long runningTimeLimit;
     [SerializeField] private Transform path;
-    private double _globalFitness;
-    private double _cachedFitness;
 
     private Transform[] _checkpoints;
-    private int _currentCheckpoint = 0;
     
+    private int _currentCheckpoint = 0;
+    private double _globalFitness;
+    private double _cachedFitness;
     private double _runningTime;
     private double _avgSpeed;
     private double _goneDistance;
@@ -87,8 +86,8 @@ public class CarAI : MonoBehaviour, IConfigurable
     private Vector3 _initEulerAngles;
     private Quaternion _initRotation;
 
-    public int InputsAmount { get; } = 12;
-    public int OutputsAmount { get; } = 3;
+    public int inputsAmount;
+    public int outputsAmount = 3;
 
     // acceleration, steering, handbrake
     public Func<double, double>[] ActivationsFunctions { get; } =
@@ -109,11 +108,15 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     private VPVehicleToolkit _vpVehicleToolkit;
     private VPResetVehicle _vpResetVehicle;
-
     private NEAT_Manager _neatManager;
     private Rigidbody _rigidbody;
-    private bool _isNeuralNetworkImported;
 
+    public void ResetWithNeuralNetwork(NeuralNetwork net)
+    {
+        _network = net;
+        Reset();
+    }
+    
     private void Awake()
     {
         _neatManager = FindObjectOfType<NEAT_Manager>();
@@ -122,6 +125,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         _vpResetVehicle = gameObject.GetComponent<VPResetVehicle>();
         _vpVehicleToolkit = GetComponent<VPVehicleToolkit>();
         _checkpoints = path.GetComponentsInChildren<Transform>();
+        
         Array.Sort(_checkpoints, (t1, t2) => string.Compare(t1.name, t2.name, StringComparison.Ordinal));
 
         GUIHelper.AddToDisplay("Fitness", () => _globalFitness);
@@ -143,6 +147,8 @@ public class CarAI : MonoBehaviour, IConfigurable
         SensorReadActionByTypeResolver.Add(SensorType.AxeY, () => (transform.eulerAngles.y - 180) / 180);
         SensorReadActionByTypeResolver.Add(SensorType.AxeZ, () => (transform.eulerAngles.z - 180) / 180);
 
+        inputsAmount = SensorByTypeResolver.Count + SensorReadActionByTypeResolver.Count;
+        
         var curTransform = transform;
         _initPosition = curTransform.position;
         _initEulerAngles = curTransform.eulerAngles;
@@ -156,13 +162,29 @@ public class CarAI : MonoBehaviour, IConfigurable
         }
         else
         {
-            _network = NeuralNetwork.Of(InputsAmount, OutputsAmount, ActivationsFunctions);
+            _network = NeuralNetwork.Of(inputsAmount, outputsAmount, ActivationsFunctions);
         }
     }
 
     private void Start()
     {
         StartCoroutine(KillIfInefficient());
+    }
+    
+    private IEnumerator KillIfInefficient()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(efficiencyCheckPeriodS);
+            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+            if (!manualControl && _globalFitness - _fitnessSinceLastCheck < inefficientFitness)
+            {
+                Death();
+                _fitnessSinceLastCheck = 0;
+                yield break;
+            }
+            _fitnessSinceLastCheck = _globalFitness;
+        }
     }
 
     private void FixedUpdate()
@@ -176,12 +198,9 @@ public class CarAI : MonoBehaviour, IConfigurable
         ReadSensors();
 
         var neuralNetworkOutput = _network.Run(_sensors.Values.ToArray());
-        acceleration = neuralNetworkOutput[0];
-        steering = neuralNetworkOutput[1];
-        handbrake = neuralNetworkOutput[2];
 
         if (!manualControl)
-            UpdateControl();
+            UpdateControl(neuralNetworkOutput);
 
         _runningTime += Time.deltaTime;
 
@@ -192,117 +211,9 @@ public class CarAI : MonoBehaviour, IConfigurable
         if (Input.GetKeyDown(manualResetButton))
             Death();
     }
-
-    private void Update()
-    {
-        CheckPause();
-    }
-
-    private static void CheckPause()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-            else
-            {
-                Time.timeScale = 0;
-            }
-        }
-    }
-
-    private void KillIfReachesTimeLimit()
-    {
-        if (_runningTime >= runningTimeLimit)
-            Death();
-    }
-
-    private void UpdateControl()
-    {
-        Accelerate();
-        Steer();
-        PutHandbrake();
-    }
-
-    public void ResetWithNeuralNetwork(NeuralNetwork net)
-    {
-        _network = net;
-        Reset();
-    }
-
-    public void Reset()
-    {
-        _runningTime = 0f;
-        _avgSpeed = 0;
-        _goneDistance = 0f;
-        _fitnessSinceLastCheck = 0f;
-        globalPenalty = 0f;
-        _currentCheckpoint = 0;
-        _cachedFitness = 0f;
-        _lastPosition = _initPosition;
-
-        _vpResetVehicle.DoReset();
-
-        var curTransform = transform;
-        curTransform.position = _initPosition;
-        curTransform.eulerAngles = _initEulerAngles;
-        curTransform.rotation = _initRotation;
-        _rigidbody.isKinematic = true;
-        StopAllCoroutines();
-        
-        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-        StartCoroutine(KillIfInefficient());
-    }
-
-    private void OnCollisionStay(Collision other)
-    {
-        CheckSurface(other.gameObject.tag, this);
-    }
-
-    private IEnumerator KillIfInefficient()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(efficiencyCheckPeriodS);
-            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-            if (!manualControl && _globalFitness - _fitnessSinceLastCheck < inefficientFitness)
-                Death();
-            _fitnessSinceLastCheck = _globalFitness;
-        }
-    }
-
-    private void ComputeFitness()
-    {
-        var destination = _checkpoints[_currentCheckpoint].position;
-        var curPosition = transform.position;
-        _goneDistance = Vector3.Distance(_lastPosition, destination) - Vector3.Distance(curPosition, destination);
-        _avgSpeed = _goneDistance / _runningTime;
-
-        _globalFitness = (_goneDistance * goneDistanceWeight) +
-                         (_avgSpeed * avgSpeedWeight)
-                         - globalPenalty
-                         + _cachedFitness;
-
-        if (!_isNeuralNetworkImported && _globalFitness >= optimalFitness && _globalFitness % optimalFitness < 0.1)
-        {
-            Debug.Log("Saving net!");
-            SerializationHelper.SerializeNeuralNetwork(_network, _globalFitness);
-        }
-    }
-
-    public void Death()
-    {
-        if (_isNeuralNetworkImported)
-            Reset();
-        else
-            _neatManager.Death(_globalFitness);
-    }
     
     private void ReadSensors()
     {
-        var ray = new Ray();
         var edgeHit = new RaycastHit();
         foreach (SensorType sensorType in Enum.GetValues(typeof(SensorType)))
         {
@@ -333,28 +244,27 @@ public class CarAI : MonoBehaviour, IConfigurable
             }
         }
     }
-
+    
     private static bool HitsRoad(RaycastHit hit)
     {
         return hit.collider.gameObject.tag.Contains("Road");
     }
-
+    
     private float Normalize(float value)
     {
         return Mathf.Abs(Mathf.Clamp(value, 0, maxSensorReadDistance)  / maxSensorReadDistance);
     }
-
-    private float NormalizeEuler(float x)
+    
+    private void UpdateControl(IReadOnlyList<double> controlUpdate)
     {
-        if (0 <= x && x <= 90)
-            return x / 90;
-
-        if (270 <= x && x <= 360)
-            return x / -360;
-
-        return 0;
+        acceleration = controlUpdate[0];
+        steering = controlUpdate[1];
+        handbrake = controlUpdate[2];
+        Accelerate();
+        Steer();
+        PutHandbrake();
     }
-
+    
     private void Accelerate()
     {
         if (acceleration < 0)
@@ -375,7 +285,26 @@ public class CarAI : MonoBehaviour, IConfigurable
     {
         _vpVehicleToolkit.SetHandbrake(handbrake >= 0.7 ? 1 : 0);
     }
+    
+    private void ComputeFitness()
+    {
+        var destination = _checkpoints[_currentCheckpoint].position;
+        var curPosition = transform.position;
+        _goneDistance = Vector3.Distance(_lastPosition, destination) - Vector3.Distance(curPosition, destination);
+        _avgSpeed = _goneDistance / _runningTime;
 
+        _globalFitness = (_goneDistance * goneDistanceWeight) +
+                         (_avgSpeed * avgSpeedWeight)
+                         - globalPenalty
+                         + _cachedFitness;
+
+        if (!_isNeuralNetworkImported && _globalFitness >= optimalFitness && _globalFitness % optimalFitness < 0.1)
+        {
+            Debug.Log("Saving net!");
+            SerializationHelper.SerializeNeuralNetwork(_network, _globalFitness);
+        }
+    }
+    
     private void Checkpoint()
     {
         if (Vector3.Distance(_checkpoints[_currentCheckpoint].position, transform.position) < 3f)
@@ -389,6 +318,72 @@ public class CarAI : MonoBehaviour, IConfigurable
             _currentCheckpoint++;
             _lastPosition = transform.position;
         }
+    }
+
+    private void KillIfReachesTimeLimit()
+    {
+        if (_runningTime >= runningTimeLimit)
+            Death();
+    }
+    
+    private void Update()
+    {
+        CheckPause();
+    }
+
+    private static void CheckPause()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        }
+    }
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        _runningTime = 0f;
+        _avgSpeed = 0;
+        _goneDistance = 0f;
+        globalPenalty = 0f;
+        _currentCheckpoint = 0;
+        _cachedFitness = 0f;
+        _fitnessSinceLastCheck = 0f;
+        _lastPosition = _initPosition;
+
+        _vpResetVehicle.DoReset();
+
+        var curTransform = transform;
+        curTransform.position = _initPosition;
+        curTransform.eulerAngles = _initEulerAngles;
+        curTransform.rotation = _initRotation;
+        _rigidbody.isKinematic = true;
+        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+        StartCoroutine(KillIfInefficient());
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        CheckSurface(other.gameObject.tag, this);
+    }
+
+    private void Death()
+    {
+        if (_isNeuralNetworkImported)
+            Reset();
+        else
+            _neatManager.Death(_globalFitness);
+    }
+    
+    private static float NormalizeEuler(float x)
+    {
+        if (0 <= x && x <= 90)
+            return x / 90;
+
+        if (270 <= x && x <= 360)
+            return x / -360;
+
+        return 0;
     }
 
     public void Configure(Dictionary<string, string> configMap)

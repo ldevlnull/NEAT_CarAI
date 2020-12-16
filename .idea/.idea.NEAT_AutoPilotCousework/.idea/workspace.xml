@@ -14,19 +14,157 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3606ea96-94d6-4415-b6bd-490f95e6e739" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NEAT_AutoPilotCousework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scenes/Scene1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/#Scripts/SerializationHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/#Scripts/SerializationHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/New Terrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SavedNetworks/NeuronNetworkStats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/2.0/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/2.0/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/2.0/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.0/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.0/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.0/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.5/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.5/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/4.5/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/browscap.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/MonoBleedingEdge/etc/mono/mconfig/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Assembly-CSharp-firstpass.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Assembly-CSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/DelaunayER.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/EasyRoads3Dv3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Microsoft.CSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Mono.Security.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.ComponentModel.Composition.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Configuration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Data.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Diagnostics.StackTrace.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Drawing.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.EnterpriseServices.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Globalization.Extensions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.IO.Compression.FileSystem.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.IO.Compression.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Net.Http.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Numerics.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Runtime.Serialization.Xml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Runtime.Serialization.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.ServiceModel.Internals.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Transactions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Xml.Linq.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Xml.XPath.XDocument.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.Xml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/System.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.Postprocessing.Runtime.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.Subsystem.Registration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.TextMeshPro.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.Timeline.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.XR.Management.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/Unity.XR.MockHMD.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ARModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AccessibilityModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AndroidJNIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AnimationModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AssetBundleModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.AudioModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ClothModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ClusterInputModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ClusterRendererModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.CoreModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.CrashReportingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.DSPGraphModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.DirectorModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.GameCenterModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.GridModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.HotReloadModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.IMGUIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ImageConversionModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.InputLegacyModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.InputModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.JSONSerializeModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.LocalizationModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ParticleSystemModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.PerformanceReportingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.Physics2DModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.PhysicsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ProfilerModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.ScreenCaptureModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SharedInternalsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SpatialTracking.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SpriteMaskModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SpriteShapeModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.StreamingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SubstanceModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.SubsystemsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TLSModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TerrainModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TextCoreModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TextRenderingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.TilemapModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UIElementsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UIElementsNativeModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UNETModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UmbraModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityConnectModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityWebRequestModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.VFXModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.VRModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.VehiclesModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.VideoModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.VirtualTexturingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.WindModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.XRModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/UnityEngine.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/VehiclePhysics.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/mscorlib.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Managed/netstandard.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Plugins/x86_64/UnityMockHMD.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Resources/unity default resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/Resources/unity_builtin_extra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/UnitySubsystems/UnityMockHMD/UnitySubsystemsManifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/app.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/boot.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/globalgamemanagers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/globalgamemanagers.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/level0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/resources.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/resources.assets.resS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/sharedassets0.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/sharedassets0.assets.resS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/NEAT_AutoPilotCousework_Data/sharedassets0.resource" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/UnityCrashHandler64.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/UnityPlayer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BuildOutput/WinPixEventRuntime.dll" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +198,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/11/a274fb2e/RaycastHit.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/c4/2bd170c3/Array.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/#Scripts/Matrix.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/51/10a53b31/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/51/48cdc9cc/FieldInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/1e/f3318feb/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/f6/7d2a229a/RangeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
@@ -98,7 +237,6 @@
         <option value="$PROJECT_DIR$/Packages/manifest.json" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/DecimalJsonConverter.cs" />
-        <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetworkDto.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/DisplayerGUI.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/GUI_Helper.cs" />
@@ -107,11 +245,13 @@
         <option value="$PROJECT_DIR$/Assets/#Scripts/CheckSurface.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/Configurable.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/IConfigurable.cs" />
-        <option value="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/SerializationHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/config.json" />
-        <option value="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" />
         <option value="$PROJECT_DIR$/Assets/#Scripts/ConfigReader.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NeuralNetwork.cs" />
+        <option value="$PROJECT_DIR$/Assets/SavedNetworks/400/NeuronNetwork_132525155852874238.json" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/CarAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/#Scripts/NEAT_Manager.cs" />
       </list>
     </option>
   </component>
@@ -188,6 +328,7 @@
       <workItem from="1607816511855" duration="735000" />
       <workItem from="1607854702276" duration="10528000" />
       <workItem from="1607877841184" duration="75000" />
+      <workItem from="1607939667893" duration="27801000" />
     </task>
     <servers />
   </component>
@@ -230,10 +371,11 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="838" y="453" key="VCS.ChangelistChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1607452554010" />
-    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1607199801363">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="156" y="92" width="1673" height="896" key="VCS.FileHistoryDialog" timestamp="1607940978183">
+      <screen x="64" y="0" width="1856" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1607199801363" />
+    <state x="156" y="92" width="1673" height="896" key="VCS.FileHistoryDialog/64.0.1856.1080@64.0.1856.1080" timestamp="1607940978183" />
     <state x="661" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607346605011">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -247,9 +389,10 @@
     </state>
     <state x="647" y="250" key="run.anything.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607723867698" />
     <state x="648" y="250" key="run.anything.popup/64.0.1856.1080@64.0.1856.1080" timestamp="1607872684200" />
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1607647662180">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="655" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1607940258763">
+      <screen x="64" y="0" width="1856" height="1080" />
     </state>
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1607647662180" />
+    <state x="655" y="235" width="672" height="678" key="search.everywhere.popup/64.0.1856.1080@64.0.1856.1080" timestamp="1607940258763" />
   </component>
 </project>

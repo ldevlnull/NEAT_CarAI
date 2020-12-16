@@ -60,8 +60,8 @@ public static class SerializationHelper
         }
 
         var deserializeObject = JsonConvert.DeserializeObject<NeuralNetworkDto>(carAI.jsonFile.text);
-        return NeuralNetwork.Of(deserializeObject, carAI.InputsAmount, carAI.neuronsInHiddenLayerCount,
-            carAI.OutputsAmount, carAI.ActivationsFunctions);
+        return NeuralNetwork.Of(deserializeObject, carAI.inputsAmount, carAI.neuronsInHiddenLayerCount,
+            carAI.outputsAmount, carAI.ActivationsFunctions);
     }
     
     private static string GenerateNeuralNetworkFileName(double fitness)

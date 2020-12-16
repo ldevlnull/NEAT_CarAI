@@ -22,7 +22,7 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
-      <Path>BuildOutput</Path>
+      <Path>Builds</Path>
       <Path>EasyRoads3Dv3</Path>
       <Path>Library</Path>
       <Path>Logs</Path>

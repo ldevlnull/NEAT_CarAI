@@ -1499,9 +1499,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manualResetButton: 8
   jsonFile: {fileID: 0}
-  neuronsInHiddenLayerCount: 0b000000
-  goneDistanceWeight: 1.2
-  avgSpeedWeight: 1
+  neuronsInHiddenLayerCount: 0800000008000000
+  goneDistanceWeight: 1.25
+  avgSpeedWeight: 0.65
   sensorOffRoadPenalty: 0
   maxSensorReadDistance: 30
   sensorFPosition: {fileID: 823187390}
@@ -1517,11 +1517,13 @@ MonoBehaviour:
   steering: 0
   handbrake: 0
   globalPenalty: 0
-  optimalFitness: 500
-  inefficientFitness: 7
+  optimalFitness: 400
+  inefficientFitness: 5
   efficiencyCheckPeriodS: 10
   runningTimeLimit: 600
   path: {fileID: 431856545}
+  inputsAmount: 0
+  outputsAmount: 3
 --- !u!4 &211617261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3905087655323472402, guid: d64711048e24a7b4aa3b7dcd7ac961b9, type: 3}
@@ -19858,7 +19860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afaa77baedb540747b4b89896e7343d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configJson: {fileID: 4900000, guid: c7d6ab2b416c9a1469b2a86e4ac92e58, type: 3}
   carAI: {fileID: 211617254}
   neatManager: {fileID: 1376840064}
 --- !u!4 &1962600919 stripped

@@ -34,7 +34,7 @@ public class NeuralNetwork : ICloneable
         Validate(neuronsInHiddenLayersAmount, activationsFunctions.Length, outputsAmount);
         ActivationsFunctions = activationsFunctions;
 
-        GenerateWeightsMatrices(inputsAmount, neuronsInHiddenLayersAmount);
+        InitHiddenLayers(inputsAmount, neuronsInHiddenLayersAmount);
 
         var weightsLastHiddenLayerToOutputLayer =
             new Matrix(neuronsInHiddenLayersAmount[neuronsInHiddenLayersAmount.Length - 1], outputsAmount);
@@ -44,7 +44,7 @@ public class NeuralNetwork : ICloneable
         GenerateWeightsValues();
     }
 
-    private void GenerateWeightsMatrices(int inputsAmount, int[] neuronsInHiddenLayersAmount)
+    private void InitHiddenLayers(int inputsAmount, int[] neuronsInHiddenLayersAmount)
     {
         for (var neuronsCount = 0; neuronsCount < neuronsInHiddenLayersAmount.Length; neuronsCount++)
         {
@@ -107,10 +107,10 @@ public class NeuralNetwork : ICloneable
 
     private void GenerateWeightsValues()
     {
-        for (var weightIndex = 0; weightIndex < Weights.Count; weightIndex++)
-        for (var rowI = 0; rowI < Weights[weightIndex].RowsCount; rowI++)
-        for (var colJ = 0; colJ < Weights[weightIndex].ColsCount; colJ++)
-            Weights[weightIndex][rowI, colJ] = Random.Range(-1f, 1f);
+        foreach (var weight in Weights)
+            for (var rowI = 0; rowI < weight.RowsCount; rowI++)
+            for (var colJ = 0; colJ < weight.ColsCount; colJ++)
+                weight[rowI, colJ] = Random.Range(-1f, 1f);
     }
 
     public object Clone()

@@ -53,8 +53,8 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
     {
         while (startingIndex < initialPopulation)
         {
-            newPopulation[startingIndex] = NeuralNetwork.Of(carAI.InputsAmount, carAI.OutputsAmount, carAI.ActivationsFunctions);
-            newPopulation[startingIndex++].Init(carAI.InputsAmount, carAI.neuronsInHiddenLayerCount, carAI.OutputsAmount,
+            newPopulation[startingIndex] = NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions);
+            newPopulation[startingIndex++].Init(carAI.inputsAmount, carAI.neuronsInHiddenLayerCount, carAI.outputsAmount,
                 carAI.ActivationsFunctions);
         }
     }
@@ -135,13 +135,13 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
             }
 
             var children = new[] {
-                NeuralNetwork.Of(carAI.InputsAmount, carAI.OutputsAmount, carAI.ActivationsFunctions), 
-                NeuralNetwork.Of(carAI.InputsAmount, carAI.OutputsAmount, carAI.ActivationsFunctions)
+                NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions), 
+                NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions)
             };
 
             foreach (var child in children)
             {
-                child.Init(carAI.InputsAmount, carAI.neuronsInHiddenLayerCount, carAI.OutputsAmount, carAI.ActivationsFunctions);
+                child.Init(carAI.inputsAmount, carAI.neuronsInHiddenLayerCount, carAI.outputsAmount, carAI.ActivationsFunctions);
                 child.Fitness = 0;
             }
 
