@@ -7,75 +7,111 @@ using Random = UnityEngine.Random;
 public class NEAT_Manager : MonoBehaviour, IConfigurable
 {
     private string _generatedStatsNameFile = "";
-    
-    [Header("References")] 
-    [SerializeField] private CarAI carAI;
 
-    [Header("NEAT Control")] 
-    [SerializeField] private int initialPopulation;
+    [Header("NEAT Control")] [SerializeField]
+    public int initialPopulation;
 
-    [SerializeField] [Range(0f, 1f)] private double mutationChance;
-    [SerializeField] private int fitnessMultiplier = 10;
+    [SerializeField] [Range(0f, 1f)] public double mutationChance;
+    [SerializeField] public int fitnessMultiplier = 10;
 
-    [Header("Crossover Control")] 
-    [SerializeField] private int bestAgentSelection = 8;
-    [SerializeField] private int worstAgentSelection = 3;
-    [SerializeField] private int numberToCrossover;
-    [SerializeField] [Range(0, 1)] private double crossoverChance = 0.5;
+    [Header("Crossover Control")] [SerializeField]
+    public int bestAgentSelection = 8;
 
-    [Header("Public View")] 
-    [SerializeField] private int currentGeneration = 1;
-    [SerializeField] private int currentGenome = 1;
-    [SerializeField] private double bestFitness;
+    [SerializeField] public int worstAgentSelection = 3;
+    [SerializeField] public int numberToCrossover;
+    [SerializeField] [Range(0, 1)] public double crossoverChance = 0.5;
 
-    private readonly List<int> _genesPool = new List<int>();
-    private int _naturallySelected;
+    [Header("Public View")] [SerializeField]
+    public int currentGeneration = 1;
 
-    private NeuralNetwork[] _population;
+    [SerializeField] public int currentGenome = 1;
+    [SerializeField] public double bestFitness;
 
-    private void Start()
+    public List<int> genesPool = new List<int>();
+    public int naturallySelected;
+
+    public NeuralNetwork[] population;
+
+    public int inputsAmount;
+    public int outputsAmount;
+    public Func<double, double>[] activationFunctions;
+    public int[] neuronsInHiddenLayerCount;
+
+    public NEAT_Manager(int initialPopulation, double mutationChance, int fitnessMultiplier, int bestAgentSelection,
+        int worstAgentSelection, int numberToCrossover, double crossoverChance, int currentGeneration,
+        int currentGenome, double bestFitness, int naturallySelected, NeuralNetwork[] population, int inputsAmount,
+        int outputsAmount, Func<double, double>[] activationFunctions, int[] neuronsInHiddenLayerCount)
     {
+        _generatedStatsNameFile = "";
+        this.initialPopulation = initialPopulation;
+        this.mutationChance = mutationChance;
+        this.fitnessMultiplier = fitnessMultiplier;
+        this.bestAgentSelection = bestAgentSelection;
+        this.worstAgentSelection = worstAgentSelection;
+        this.numberToCrossover = numberToCrossover;
+        this.crossoverChance = crossoverChance;
+        this.currentGeneration = currentGeneration;
+        this.currentGenome = currentGenome;
+        this.bestFitness = bestFitness;
+        this.naturallySelected = naturallySelected;
+        this.population = population;
+        this.inputsAmount = inputsAmount;
+        this.outputsAmount = outputsAmount;
+        this.activationFunctions = activationFunctions;
+        this.neuronsInHiddenLayerCount = neuronsInHiddenLayerCount;
+        genesPool = new List<int>();
+    }
+
+    public void PostConfigStart(CarAI carAI)
+    {
+        if (!carAI.isMaster) return;
+        
         GUIHelper.AddToDisplay("Best fitness", () => bestFitness);
         GUIHelper.AddToDisplay("Generation", () => currentGeneration);
         GUIHelper.AddToDisplay("Genome", () => currentGenome);
-        
-        CreatePopulation();
+        inputsAmount = carAI.inputsAmount;
+        outputsAmount = carAI.outputsAmount;
+        activationFunctions = carAI.ActivationsFunctions;
+        neuronsInHiddenLayerCount = carAI.neuronsInHiddenLayerCount;
+
+        CreatePopulation(carAI);
     }
 
-    private void CreatePopulation()
+    private void CreatePopulation(CarAI carAI)
     {
-        _population = new NeuralNetwork[initialPopulation];
-        RandomizePopulation(_population, 0);
-        ResetToCurrentGenome();
+        population = new NeuralNetwork[initialPopulation];
+        RandomizePopulation(population, 0);
+        ResetToCurrentGenome(carAI);
     }
 
     private void RandomizePopulation(NeuralNetwork[] newPopulation, int startingIndex)
     {
         while (startingIndex < initialPopulation)
         {
-            newPopulation[startingIndex] = NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions);
-            newPopulation[startingIndex++].Init(carAI.inputsAmount, carAI.neuronsInHiddenLayerCount, carAI.outputsAmount,
-                carAI.ActivationsFunctions);
+            newPopulation[startingIndex] =
+                NeuralNetwork.Of(inputsAmount, outputsAmount, activationFunctions);
+            newPopulation[startingIndex++].Init(inputsAmount, neuronsInHiddenLayerCount,
+                outputsAmount, activationFunctions);
         }
     }
 
-    private void ResetToCurrentGenome()
+    private void ResetToCurrentGenome(CarAI carAI)
     {
-        carAI.ResetWithNeuralNetwork(_population[currentGenome]);
+        carAI.ResetWithNeuralNetwork(population[currentGenome]);
     }
 
-    public void Death(double fitness)
+    public void Death(CarAI carAI, double fitness)
     {
         UpdateBestFitness(fitness);
 
-        if (currentGenome < _population.Length - 1)
+        if (currentGenome < population.Length - 1)
         {
-            _population[currentGenome++].Fitness = fitness;
-            ResetToCurrentGenome();
+            population[currentGenome++].Fitness = fitness;
+            ResetToCurrentGenome(carAI);
         }
         else
         {
-            Repopulate();
+            Repopulate(carAI);
         }
     }
 
@@ -84,26 +120,27 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         bestFitness = (fitness > bestFitness) ? fitness : bestFitness;
     }
 
-    private void Repopulate()
+    private void Repopulate(CarAI carAI)
     {
-        SerializationHelper.SerializeStats(currentGeneration, _population, ref _generatedStatsNameFile);
-        _genesPool.Clear();
+        SerializationHelper.SerializeStats(currentGeneration, population, ref _generatedStatsNameFile);
+        genesPool.Clear();
         currentGeneration++;
-        _naturallySelected = 0;
+        naturallySelected = 0;
 
         SortPopulation();
         var newPopulation = SelectBestPopulation();
         Crossover(newPopulation);
         Mutate(newPopulation);
-        RandomizePopulation(newPopulation, _naturallySelected);
-        _population = newPopulation;
+        RandomizePopulation(newPopulation, naturallySelected);
+        population = newPopulation;
         currentGenome = 0;
-        ResetToCurrentGenome();
+
+        ResetToCurrentGenome(carAI);
     }
 
     private void Mutate(NeuralNetwork[] newPopulation)
     {
-        for (var i = 0; i < _naturallySelected; i++)
+        for (var i = 0; i < naturallySelected; i++)
         {
             for (var j = 0; j < newPopulation[i].Weights.Count; j++)
             {
@@ -121,27 +158,28 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         {
             int firstParentIndex = i, secondParentIndex = i + 1;
 
-            if (_genesPool.Count >= 1)
+            if (genesPool.Count >= 1)
             {
-                var randomIndex1 = Random.Range(0, _genesPool.Count);
+                var randomIndex1 = Random.Range(0, genesPool.Count);
                 int randomIndex2;
                 do
                 {
-                    randomIndex2 = Random.Range(0, _genesPool.Count);
-                } while (_genesPool[randomIndex1] == _genesPool[randomIndex2]);
+                    randomIndex2 = Random.Range(0, genesPool.Count);
+                } while (genesPool[randomIndex1] == genesPool[randomIndex2]);
 
-                firstParentIndex = _genesPool[randomIndex1];
-                secondParentIndex = _genesPool[randomIndex2];
+                firstParentIndex = genesPool[randomIndex1];
+                secondParentIndex = genesPool[randomIndex2];
             }
 
-            var children = new[] {
-                NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions), 
-                NeuralNetwork.Of(carAI.inputsAmount, carAI.outputsAmount, carAI.ActivationsFunctions)
+            var children = new[]
+            {
+                NeuralNetwork.Of(inputsAmount, outputsAmount, activationFunctions),
+                NeuralNetwork.Of(inputsAmount, outputsAmount, activationFunctions)
             };
 
             foreach (var child in children)
             {
-                child.Init(carAI.inputsAmount, carAI.neuronsInHiddenLayerCount, carAI.outputsAmount, carAI.ActivationsFunctions);
+                child.Init(inputsAmount, neuronsInHiddenLayerCount, outputsAmount, activationFunctions);
                 child.Fitness = 0;
             }
 
@@ -150,22 +188,22 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
                 var doCrossover = Random.Range(0f, 1f) < crossoverChance;
                 foreach (var child in children)
                 {
-                    child.Weights[w] = _population[doCrossover ? firstParentIndex : secondParentIndex].Weights[w];
+                    child.Weights[w] = population[doCrossover ? firstParentIndex : secondParentIndex].Weights[w];
                 }
             }
-            
+
             for (var b = 0; b < children[0].Weights.Count; b++)
             {
                 var doCrossover = Random.Range(0f, 1f) < crossoverChance;
                 foreach (var child in children)
                 {
-                    child.Biases[b] = _population[doCrossover ? firstParentIndex : secondParentIndex].Biases[b];
+                    child.Biases[b] = population[doCrossover ? firstParentIndex : secondParentIndex].Biases[b];
                 }
             }
 
             foreach (var child in children)
             {
-                newPopulation[_naturallySelected++] = child;
+                newPopulation[naturallySelected++] = child;
             }
         }
     }
@@ -175,27 +213,27 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         var newPopulation = new NeuralNetwork[initialPopulation];
         for (var i = 0; i < bestAgentSelection; i++)
         {
-            newPopulation[_naturallySelected] = _population[i].Clone() as NeuralNetwork;
-            newPopulation[_naturallySelected++].Fitness = 0;
+            newPopulation[naturallySelected] = population[i].Clone() as NeuralNetwork;
+            newPopulation[naturallySelected++].Fitness = 0;
 
-            var f = Mathf.RoundToInt((float)_population[i].Fitness * fitnessMultiplier);
+            var f = Mathf.RoundToInt((float) population[i].Fitness * fitnessMultiplier);
 
             for (var j = 0; j < f; j++)
             {
-                _genesPool.Add(i);
+                genesPool.Add(i);
             }
         }
 
         for (var i = 0; i < worstAgentSelection; i++)
         {
-            var last = _population.Length - 1;
+            var last = population.Length - 1;
             last -= i;
 
-            var f = Mathf.RoundToInt((float)_population[last].Fitness * fitnessMultiplier);
+            var f = Mathf.RoundToInt((float) population[last].Fitness * fitnessMultiplier);
 
             for (var j = 0; j < f; j++)
             {
-                _genesPool.Add(last);
+                genesPool.Add(last);
             }
         }
 
@@ -204,7 +242,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
     private void SortPopulation()
     {
-        Array.Sort(_population, (n1, n2) => decimal.Compare((decimal) n2.Fitness, (decimal) n1.Fitness));
+        Array.Sort(population, (n1, n2) => decimal.Compare((decimal) n2.Fitness, (decimal) n1.Fitness));
     }
 
     public void Configure(Dictionary<string, string> configMap)
@@ -216,5 +254,27 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         worstAgentSelection = int.Parse(configMap["worstAgentSelection"]);
         numberToCrossover = int.Parse(configMap["numberToCrossover"]);
         crossoverChance = float.Parse(configMap["crossoverChance"]);
+    }
+
+    public void Create(NEAT_Manager deserializeNeat)
+    {
+        _generatedStatsNameFile = "";
+        initialPopulation = deserializeNeat.initialPopulation;
+        mutationChance = deserializeNeat.mutationChance;
+        fitnessMultiplier = deserializeNeat.fitnessMultiplier;
+        bestAgentSelection = deserializeNeat.bestAgentSelection;
+        worstAgentSelection = deserializeNeat.worstAgentSelection;
+        numberToCrossover = deserializeNeat.numberToCrossover;
+        crossoverChance = deserializeNeat.crossoverChance;
+        currentGeneration = deserializeNeat.currentGeneration;
+        currentGenome = deserializeNeat.currentGenome;
+        bestFitness = deserializeNeat.bestFitness;
+        naturallySelected = deserializeNeat.naturallySelected;
+        population = deserializeNeat.population;
+        inputsAmount = deserializeNeat.inputsAmount;
+        outputsAmount = deserializeNeat.outputsAmount;
+        activationFunctions = deserializeNeat.activationFunctions;
+        neuronsInHiddenLayerCount = deserializeNeat.neuronsInHiddenLayerCount;
+        genesPool = new List<int>();
     }
 }
