@@ -15,7 +15,6 @@ public class CarAI : MonoBehaviour, IConfigurable
     {
         Left,
         Right,
-        Back,
 
         Speed,
 
@@ -32,27 +31,14 @@ public class CarAI : MonoBehaviour, IConfigurable
         FrontDynamic7,
         FrontDynamic8,
         FrontDynamic9,
-        FrontDynamic10,
-        FrontDynamic11,
-        FrontDynamic12,
-        FrontDynamic13,
-        FrontDynamic14,
-        FrontDynamic15,
-        FrontDynamic16,
-        FrontDynamic17,
-        FrontDynamic18,
-        FrontDynamic19,
-        FrontDynamic20,
-        FrontDynamic21,
-        FrontDynamic22,
-        FrontDynamic23,
-        FrontDynamic24,
+        
+        CheckpointDirection,
     }
 
     private readonly SensorType[] _dynamicFrontSensorTypes = Enum.GetValues(typeof(SensorType)).Cast<SensorType>()
         .Where(t => t.ToString().Contains("FrontDynamic")).ToArray();
 
-    private SensorType[] _active_sensorTypes;
+    private SensorType[] _activeSensorTypes;
 
     private NeuralNetwork _network;
 
@@ -66,18 +52,18 @@ public class CarAI : MonoBehaviour, IConfigurable
     [Header("Neural Network")] [SerializeField]
     public int[] neuronsInHiddenLayerCount;
 
-    public bool isMaster = false;
+    public bool isMaster;
 
     [SerializeField] private double goneDistanceWeight;
     [SerializeField] private double avgSpeedWeight;
     [SerializeField] private double passedCheckpointsWeight;
-    [SerializeField] private float maxSensorReadDistance = 25f;
+    [SerializeField] private float maxSensorReadDistance;
 
-    [Header("Sensors")] [SerializeField] private Transform sensorRPosition;
+    [Header("Sensors")] 
+    [SerializeField] private Transform sensorRPosition;
     [SerializeField] private Transform sensorBPosition;
     [SerializeField] private Transform sensorLPosition;
     [SerializeField] private Transform sensorDynamicF;
-    [SerializeField] private Transform sensorCheckpointDirection;
 
     private static readonly Dictionary<SensorType, Transform> SensorByTypeResolver =
         new Dictionary<SensorType, Transform>();
@@ -85,12 +71,13 @@ public class CarAI : MonoBehaviour, IConfigurable
     private static readonly Dictionary<SensorType, Func<double>> SensorReadActionByTypeResolver =
         new Dictionary<SensorType, Func<double>>();
 
-    [Header("Control")] [SerializeField] private bool manualControl;
+    [Header("Control")] 
+    [SerializeField] private bool manualControl;
     [SerializeField] [Range(-1f, 1f)] private double acceleration;
     [SerializeField] [Range(-1f, 1f)] private double steering;
     [SerializeField] [Range(0f, 1f)] private double handbrake;
 
-    [Header("Fitness")] [SerializeField] private double globalPenalty;
+    [Header("Fitness")] 
     [SerializeField] private long optimalFitness;
     [SerializeField] private long inefficientFitness;
     [SerializeField] private long efficiencyCheckPeriodS;
@@ -116,10 +103,9 @@ public class CarAI : MonoBehaviour, IConfigurable
     private Quaternion _initRotation;
     private double _lastSpeed;
 
-    [Header("Front Scanner")] [SerializeField]
-    private int horizontalAngle = 30;
-
-    [SerializeField] private float horizontalStep = 1.8f;
+    [Header("Front Scanner")] 
+    [SerializeField] private int horizontalAngle;
+    [SerializeField] private float horizontalStep;
     private int _horizontalRaysCount;
 
     public int inputsAmount;
@@ -197,7 +183,6 @@ public class CarAI : MonoBehaviour, IConfigurable
             GUIHelper.AddToDisplay("Timescale", () => Time.timeScale);
         }
 
-        SensorByTypeResolver.Add(SensorType.Back, sensorBPosition);
         SensorByTypeResolver.Add(SensorType.Right, sensorRPosition);
         SensorByTypeResolver.Add(SensorType.Left, sensorLPosition);
         SensorByTypeResolver.Add(SensorType.FrontDynamic, sensorDynamicF);
@@ -205,7 +190,23 @@ public class CarAI : MonoBehaviour, IConfigurable
         SensorReadActionByTypeResolver.Add(SensorType.Speed, () => _vpVehicleToolkit.speed / 40);
         SensorReadActionByTypeResolver.Add(SensorType.AxeX, () => NormalizeEuler(transform.eulerAngles.x));
         SensorReadActionByTypeResolver.Add(SensorType.AxeZ, () => (transform.eulerAngles.z - 180) / 180);
-
+        SensorReadActionByTypeResolver.Add(SensorType.CheckpointDirection, () =>
+        {
+            var sensorTransform = SensorByTypeResolver[SensorType.FrontDynamic];
+            var frontSensorPosition = sensorTransform.position;
+            var nextCheckPointPosition = _checkpoints[
+                (_currentCheckpoint < _checkpoints.Length) ? _currentCheckpoint : _currentCheckpoint - 1
+            ].position;
+        
+            var targetDir = nextCheckPointPosition - frontSensorPosition;
+            var forward = sensorTransform.forward;
+            var angle = Vector3.SignedAngle(forward, targetDir, Vector3.up);
+            angle = (angle > 0) ? angle - 65 : angle + 65;
+            var normalizedAngle = angle / 180 + 0.5;
+        
+            return normalizedAngle;
+        });
+        
         inputsAmount = SensorByTypeResolver.Count + SensorReadActionByTypeResolver.Count + _horizontalRaysCount;
 
         var curTransform = transform;
@@ -229,7 +230,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         }
 
 
-        _active_sensorTypes = Enum.GetValues(typeof(SensorType))
+        _activeSensorTypes = Enum.GetValues(typeof(SensorType))
             .Cast<SensorType>()
             .Where(t => !(_dynamicFrontSensorTypes.Contains(t) && !t.Equals(SensorType.FrontDynamic)))
             .ToArray();
@@ -245,7 +246,6 @@ public class CarAI : MonoBehaviour, IConfigurable
         while (true)
         {
             yield return new WaitForSeconds(efficiencyCheckPeriodS);
-            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
             if (!manualControl && _globalFitness - _fitnessSinceLastCheck < inefficientFitness)
             {
                 Death();
@@ -285,7 +285,7 @@ public class CarAI : MonoBehaviour, IConfigurable
     private void ReadSensors()
     {
         var edgeHit = new RaycastHit();
-        foreach (SensorType sensorType in _active_sensorTypes)
+        foreach (SensorType sensorType in _activeSensorTypes)
         {
             if (SensorByTypeResolver.TryGetValue(sensorType, out var sensorTransform))
             {
@@ -401,7 +401,6 @@ public class CarAI : MonoBehaviour, IConfigurable
         _globalFitness = (_goneDistance * goneDistanceWeight) +
                          (_avgSpeed * avgSpeedWeight)
                          + _currentCheckpoint * passedCheckpointsWeight
-                         - globalPenalty
                          + _cachedFitness;
 
         if (!_isNeuralNetworkImported && !manualControl && _globalFitness >= optimalFitness &&
@@ -470,7 +469,6 @@ public class CarAI : MonoBehaviour, IConfigurable
         _runningTime = 0f;
         _avgSpeed = 0;
         _goneDistance = 0f;
-        globalPenalty = 0f;
         _currentCheckpoint = 0;
         _cachedFitness = 0f;
         _fitnessSinceLastCheck = 0f;
@@ -490,7 +488,6 @@ public class CarAI : MonoBehaviour, IConfigurable
             _checkpoints[i].gameObject.SetActive(i < 3);
         }
 
-        // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
         StartCoroutine(KillIfInefficient());
     }
 
