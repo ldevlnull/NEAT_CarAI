@@ -77,7 +77,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         CreatePopulation(carAI);
     }
 
-    private void CreatePopulation(CarAI carAI)
+    protected void CreatePopulation(CarAI carAI)
     {
         population = new NeuralNetwork[initialPopulation];
         RandomizePopulation(population, 0);

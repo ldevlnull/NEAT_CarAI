@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using EdyCommonTools;
 using JetBrains.Annotations;
+using SharpNeat.Phenomes;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnitySharpNEAT;
 using VehiclePhysics;
 using Debug = UnityEngine.Debug;
 
-public class CarAI : MonoBehaviour, IConfigurable
+public class CarAI : UnitController, IConfigurable
 {
     private enum SensorType
     {
@@ -31,7 +31,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         FrontDynamic7,
         FrontDynamic8,
         FrontDynamic9,
-        
+
         CheckpointDirection,
     }
 
@@ -59,8 +59,7 @@ public class CarAI : MonoBehaviour, IConfigurable
     [SerializeField] private double passedCheckpointsWeight;
     [SerializeField] private float maxSensorReadDistance;
 
-    [Header("Sensors")] 
-    [SerializeField] private Transform sensorRPosition;
+    [Header("Sensors")] [SerializeField] private Transform sensorRPosition;
     [SerializeField] private Transform sensorBPosition;
     [SerializeField] private Transform sensorLPosition;
     [SerializeField] private Transform sensorDynamicF;
@@ -71,14 +70,13 @@ public class CarAI : MonoBehaviour, IConfigurable
     private static readonly Dictionary<SensorType, Func<double>> SensorReadActionByTypeResolver =
         new Dictionary<SensorType, Func<double>>();
 
-    [Header("Control")] 
-    [SerializeField] private bool manualControl;
+    [Header("Control")] [SerializeField] private bool manualControl;
+    [SerializeField] private bool isNeatV2;
     [SerializeField] [Range(-1f, 1f)] private double acceleration;
     [SerializeField] [Range(-1f, 1f)] private double steering;
     [SerializeField] [Range(0f, 1f)] private double handbrake;
 
-    [Header("Fitness")] 
-    [SerializeField] private long optimalFitness;
+    [Header("Fitness")] [SerializeField] private long optimalFitness;
     [SerializeField] private long inefficientFitness;
     [SerializeField] private long efficiencyCheckPeriodS;
     [SerializeField] private long runningTimeLimit;
@@ -103,8 +101,9 @@ public class CarAI : MonoBehaviour, IConfigurable
     private Quaternion _initRotation;
     private double _lastSpeed;
 
-    [Header("Front Scanner")] 
-    [SerializeField] private int horizontalAngle;
+    [Header("Front Scanner")] [SerializeField]
+    private int horizontalAngle;
+
     [SerializeField] private float horizontalStep;
     private int _horizontalRaysCount;
 
@@ -197,17 +196,18 @@ public class CarAI : MonoBehaviour, IConfigurable
             var nextCheckPointPosition = _checkpoints[
                 (_currentCheckpoint < _checkpoints.Length) ? _currentCheckpoint : _currentCheckpoint - 1
             ].position;
-        
+
             var targetDir = nextCheckPointPosition - frontSensorPosition;
             var forward = sensorTransform.forward;
             var angle = Vector3.SignedAngle(forward, targetDir, Vector3.up);
             angle = (angle > 0) ? angle - 65 : angle + 65;
             var normalizedAngle = angle / 180 + 0.5;
-        
+
             return normalizedAngle;
         });
-        
+
         inputsAmount = SensorByTypeResolver.Count + SensorReadActionByTypeResolver.Count + _horizontalRaysCount;
+        Debug.Log("Inputs amount: " + inputsAmount);
 
         var curTransform = transform;
         _initPosition = curTransform.position;
@@ -215,18 +215,21 @@ public class CarAI : MonoBehaviour, IConfigurable
         _initRotation = curTransform.rotation;
         _lastPosition = _initPosition;
 
-        if (_isNeuralNetworkImported)
+        if (!isNeatV2)
         {
-            Destroy(_neatManager);
-            _network = SerializationHelper.DeserializeNeuralNetwork(this);
-        }
-        else
-        {
-            _network = NeuralNetwork.Of(inputsAmount, outputsAmount, ActivationsFunctions);
-            if (_isNeatImported)
-                _neatManager.PostConfigStart(this);
+            if (_isNeuralNetworkImported)
+            {
+                Destroy(_neatManager);
+                _network = SerializationHelper.DeserializeNeuralNetwork(this);
+            }
             else
-                FindObjectOfType<ConfigReader>().ReadConfigTree(_neatManager);
+            {
+                _network = NeuralNetwork.Of(inputsAmount, outputsAmount, ActivationsFunctions);
+                if (_isNeatImported)
+                    _neatManager.PostConfigStart(this);
+                else
+                    FindObjectOfType<ConfigReader>().ReadConfigTree(_neatManager);
+            }
         }
 
 
@@ -236,10 +239,10 @@ public class CarAI : MonoBehaviour, IConfigurable
             .ToArray();
     }
 
-    private void Start()
-    {
-        StartCoroutine(KillIfInefficient());
-    }
+    // private void Start()
+    // {
+    //     StartCoroutine(KillIfInefficient());
+    // }
 
     private IEnumerator KillIfInefficient()
     {
@@ -257,30 +260,30 @@ public class CarAI : MonoBehaviour, IConfigurable
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (!_vpVehicleToolkit.isEngineStarted)
-            _vpVehicleToolkit.enabled = !_vpVehicleToolkit.enabled;
-
-        if (_rigidbody.isKinematic)
-            _rigidbody.isKinematic = false;
-
-        ReadSensors();
-
-        var neuralNetworkOutput = _network.Run(_sensors.Values.ToArray(), logInputs);
-
-        if (!manualControl)
-            UpdateControl(neuralNetworkOutput);
-
-        _runningTime += Time.deltaTime;
-
-        ComputeFitness();
-        Checkpoint();
-        KillIfReachesTimeLimit();
-
-        if (Input.GetKeyDown(manualResetButton))
-            Death();
-    }
+    // private void FixedUpdate()
+    // {
+    //     if (!_vpVehicleToolkit.isEngineStarted)
+    //         _vpVehicleToolkit.enabled = !_vpVehicleToolkit.enabled;
+    //
+    //     if (_rigidbody.isKinematic)
+    //         _rigidbody.isKinematic = false;
+    //
+    //     ReadSensors();
+    //
+    //     var neuralNetworkOutput = _network.Run(_sensors.Values.ToArray(), logInputs);
+    //
+    //     if (!manualControl || !isNeatV2)
+    //         UpdateControl(neuralNetworkOutput);
+    //
+    //     _runningTime += Time.deltaTime;
+    //
+    //     ComputeFitness();
+    //     Checkpoint();
+    //     KillIfReachesTimeLimit();
+    //
+    //     if (Input.GetKeyDown(manualResetButton))
+    //         Death();
+    // }
 
     private void ReadSensors()
     {
@@ -365,6 +368,16 @@ public class CarAI : MonoBehaviour, IConfigurable
         acceleration = controlUpdate[0];
         steering = controlUpdate[1];
         handbrake = controlUpdate[2];
+        Accelerate();
+        Steer();
+        PutHandbrake();
+    }
+
+    private void UpdateControl(ISignalArray controlUpdate)
+    {
+        acceleration = controlUpdate[0];
+        steering = controlUpdate[1];
+        // handbrake = controlUpdate[2];
         Accelerate();
         Steer();
         PutHandbrake();
@@ -498,7 +511,8 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     private void Death()
     {
-        if (_isNeuralNetworkImported)
+        Debug.Log("Death!");
+        if (_isNeuralNetworkImported || isNeatV2)
             Reset();
         else
             _neatManager.Death(this, _globalFitness);
@@ -529,9 +543,62 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     public void OnApplicationQuit()
     {
-        if (_isNeatImported || _neatManager.currentGeneration < 2 || manualControl) return;
+        if (isNeatV2 || _isNeatImported || _neatManager.currentGeneration < 2 || manualControl) return;
 
         Debug.Log("Saving neat");
         SerializationHelper.SerializeNeat(_neatManager);
+    }
+
+    protected override void UpdateBlackBoxInputs(ISignalArray inputSignalArray)
+    {
+        if (!_vpVehicleToolkit.isEngineStarted)
+            _vpVehicleToolkit.enabled = !_vpVehicleToolkit.enabled;
+
+        if (_rigidbody.isKinematic)
+            _rigidbody.isKinematic = false;
+
+        ReadSensors();
+        // inputSignalArray.CopyFrom(_sensors.Values.ToArray(), 0);
+        var readValues = _sensors.Values.ToArray();
+        for (int i = 0; i < inputSignalArray.Length; i++)
+        {
+            inputSignalArray[i] = readValues[i];
+        }
+    }
+
+    protected override void UseBlackBoxOutpts(ISignalArray outputSignalArray)
+    {
+        for (int i = 0; i < outputSignalArray.Length; i++)
+        {
+            Debug.Log("o" + i + ": " + outputSignalArray[i]);
+        }
+        UpdateControl(outputSignalArray);
+
+        _runningTime += Time.deltaTime;
+        
+        Checkpoint();
+        // KillIfReachesTimeLimit();
+
+        if (Input.GetKeyDown(manualResetButton))
+            Death();
+    }
+
+    public override float GetFitness()
+    {
+        ComputeFitness();
+        return (_globalFitness < 0) ? 0 : (float)_globalFitness;
+    }
+
+    protected override void HandleIsActiveChanged(bool newIsActive)
+    {
+        if (!newIsActive)
+        {
+            Death();
+        }
+    }
+
+    public void ResetWithHyperNEAT(NeuralNetwork neuralNetwork, HyperNEAT_Manager.Substrate[] substrates, float connectionThreshold)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -1,10 +1,10 @@
 {
-  "initialPopulation": "85",
+  "initialPopulation": "15",
   "mutationChance": "0.165",
   "fitnessMultiplier": "10",
-  "bestAgentSelection": "8",
-  "worstAgentSelection": "3",
-  "numberToCrossover": "40",
+  "bestAgentSelection": "4",
+  "worstAgentSelection": "2",
+  "numberToCrossover": "8",
   "crossoverChance": "0.5",
   
   "goneDistanceWeight": "1.2",
