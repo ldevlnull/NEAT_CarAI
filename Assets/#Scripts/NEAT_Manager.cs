@@ -33,6 +33,8 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
     private NeuralNetwork[] _population;
 
+    private NeuralNetwork lastBestNeuralNetwork;
+
     private void Start()
     {
         GUIHelper.AddToDisplay("Best fitness", () => bestFitness);

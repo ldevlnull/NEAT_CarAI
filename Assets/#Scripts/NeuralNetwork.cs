@@ -66,10 +66,13 @@ public class NeuralNetwork : ICloneable
         }
     }
 
-    public double[] Run(double[] inputs)
+    public double[] Run(double[] inputs, bool logInputs)
     {
+        if (logInputs)
+            Debug.Log("inputs:" + string.Join(", ", inputs.Select(i => $"{i:0.#####}").ToArray()));
+        
         if (inputs.Length != InputLayer.ColsCount)
-            throw new ArgumentException($"Wrong inputs size! Neural network has {InputLayer.RowsCount} inputs.");
+            throw new ArgumentException($"Wrong inputs size! Neural network has {InputLayer.ColsCount} input-neurons and network got {inputs.Length} inputs.");
 
         for (var i = 0; i < inputs.Length; i++)
         {

@@ -2,11 +2,15 @@
 
 public class CheckSurface : MonoBehaviour
 {
+    private CarAI _carAI;
 
-    [SerializeField] private CarAI carAI;
-
+    private void Start()
+    {
+        _carAI = GetComponentInParent<CarAI>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        carAI.CheckSurface(other.tag, carAI);
+        _carAI.checkSurface(other.tag, _carAI);
     }
 }

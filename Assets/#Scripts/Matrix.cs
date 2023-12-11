@@ -48,7 +48,7 @@ public class Matrix
     {
         if (a.ColsCount != b.RowsCount)
             throw new ArgumentException(
-                "Wrong matrix's sizes! The columns count of matrix A must be equal to rows count of matrix B.");
+                $"Wrong matrix's sizes! The columns count of matrix A {a.ColsCount} must be equal to rows count of matrix B {b.RowsCount}.");
 
         var targetColsCount = b.ColsCount;
         var targetRowsCount = a.RowsCount;

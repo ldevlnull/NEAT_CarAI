@@ -1,19 +1,18 @@
 {
   "initialPopulation": "85",
-  "mutationChance": "0.055",
+  "mutationChance": "0.165",
   "fitnessMultiplier": "10",
   "bestAgentSelection": "8",
   "worstAgentSelection": "3",
-  "numberToCrossover": "39",
+  "numberToCrossover": "40",
   "crossoverChance": "0.5",
   
-  "jsonFilePath": "",
   "goneDistanceWeight": "1.2",
-  "avgSpeedWeight": "0.85",
-  "sensorOffRoadPenalty": "0.0",
-  "maxSensorReadDistance": "40.0",
-  "optimalFitness": "400",
-  "inefficientFitness": "7",
-  "efficiencyCheckPeriodS": "10",
+  "avgSpeedWeight": "0.35",
+  "passedCheckpointsWeight": "2",
+  "maxSensorReadDistance": "30.0",
+  "optimalFitness": "200",
+  "inefficientFitness": "4",
+  "efficiencyCheckPeriodS": "3",
   "runningTimeLimit": "600"
 }

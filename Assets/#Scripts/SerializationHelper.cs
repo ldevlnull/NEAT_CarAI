@@ -5,21 +5,19 @@ using Newtonsoft.Json;
 
 public static class SerializationHelper
 {
-    private const string StatsPathPrefix = @"logs\Stats_";
-    private const string SerializationDirectory = @"logs\SavedNetworks\";
+    private const string StatsPathPrefix = @"Assets\logs\Stats_";
+    private const string SerializationDirectory = @"Assets\logs\SavedNetworks";
+    private const string SerializationNeatDirectory = @"Assets\logs\SavedNeats";
 
     private static readonly JsonSerializer Serializer = new JsonSerializer();
 
     public static void SerializeStats(int currentGeneration, NeuralNetwork[] population, ref string statsFileName)
     {
-        if (!Directory.Exists("logs"))
-        {
-            Directory.CreateDirectory("logs");
-        }
-        if (statsFileName.Equals(""))
+        if (statsFileName == null || statsFileName.Equals(""))
             statsFileName = $"{StatsPathPrefix}{DateTime.Now.ToFileTime()}.csv";
         if (!File.Exists(statsFileName))
         {
+            Directory.CreateDirectory(StatsPathPrefix);
             var newFile = File.CreateText(statsFileName);
             newFile.Write("Generation,Genome,Fitness\n\r");
             newFile.Close();
@@ -30,20 +28,20 @@ public static class SerializationHelper
         {
             text.Append($"{currentGeneration},{genome},{population[genome].Fitness}\n");
         }
-        
+
         using (var file = File.AppendText(statsFileName))
         {
             file.Write(text.ToString());
         }
     }
-    
+
     public static void SerializeNeuralNetwork(NeuralNetwork neuralNetwork, double fitness)
     {
         if (!Directory.Exists("logs"))
         {
             Directory.CreateDirectory("logs");
         }
-        
+
         var path = GenerateNeuralNetworkFileName(fitness);
         using (var file = File.CreateText(path))
         {
@@ -51,7 +49,7 @@ public static class SerializationHelper
             Serializer.Serialize(file, dto);
         }
     }
-    
+
     public static NeuralNetwork DeserializeNeuralNetwork(CarAI carAI)
     {
         if (carAI.jsonFile == null)
