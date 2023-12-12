@@ -29,6 +29,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         FrontDynamic7,
         FrontDynamic8,
         FrontDynamic9,
+        FrontDynamic10,
         
         CheckpointDirection,
     }
@@ -90,6 +91,7 @@ public class CarAI : MonoBehaviour, IConfigurable
     private double _goneDistance;
     private double _fitnessSinceLastCheck = 0;
     private double _distanceTravelled;
+    private List<Double> _globalBehaviour;
 
     private Vector3 _initPosition;
     private Vector3 _lastPosition;
@@ -244,8 +246,9 @@ public class CarAI : MonoBehaviour, IConfigurable
             UpdateControl(neuralNetworkOutput);
 
         _runningTime += Time.deltaTime;
-
+        
         ComputeFitness();
+        ComputeBehaviourScore();
         Checkpoint();
         KillIfReachesTimeLimit();
 
@@ -380,6 +383,17 @@ public class CarAI : MonoBehaviour, IConfigurable
             Debug.Log("Saving net due to optimal fitness!");
             SerializationHelper.SerializeNeuralNetwork(_network, _globalFitness);
         }
+    }
+
+
+    private void ComputeBehaviourScore()
+    {
+        var destination = _checkpoints[_currentCheckpoint].position;
+        var curPosition = transform.position;
+        _goneDistance = Vector3.Distance(_lastPosition, destination) - Vector3.Distance(curPosition, destination);
+        _avgSpeed = _goneDistance / _runningTime;
+
+        _globalBehaviour = new List<double> {_goneDistance, _avgSpeed};
     }
 
     private void Checkpoint()

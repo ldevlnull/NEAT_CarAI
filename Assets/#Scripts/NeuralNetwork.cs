@@ -16,6 +16,8 @@ public class NeuralNetwork : ICloneable
     public Func<double, double>[] ActivationsFunctions { get; private set; }
 
     [field: NonSerialized] [JsonIgnore] public double Fitness { get; set; }
+    [field: NonSerialized] [JsonIgnore] public double Novelty { get; set; }
+    
 
     [JsonConstructor]
     private NeuralNetwork(int inputsAmount, int outputsAmount, Func<double, double>[] functions)

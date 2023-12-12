@@ -1499,30 +1499,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manualResetButton: 8
   jsonFile: {fileID: 0}
-  neuronsInHiddenLayerCount: 0800000008000000
+  neuronsInHiddenLayerCount: 01000000
   goneDistanceWeight: 1.25
   avgSpeedWeight: 0.65
-  sensorOffRoadPenalty: 0
+  passedCheckpointsWeight: 0
   maxSensorReadDistance: 30
-  sensorFPosition: {fileID: 823187390}
-  sensorFRPosition: {fileID: 619751880}
   sensorRPosition: {fileID: 1000489112}
   sensorBPosition: {fileID: 1892094030}
   sensorLPosition: {fileID: 279622067}
-  sensorFLPosition: {fileID: 476933359}
-  sensorFLCPosition: {fileID: 2048233381}
-  sensorFRCPosition: {fileID: 1070796208}
+  sensorDynamicF: {fileID: 823187390}
   manualControl: 0
   acceleration: 0
   steering: 0
   handbrake: 0
-  globalPenalty: 0
   optimalFitness: 400
   inefficientFitness: 5
-  efficiencyCheckPeriodS: 10
+  efficiencyCheckPeriodS: 3
   runningTimeLimit: 600
   path: {fileID: 431856545}
-  inputsAmount: 0
+  logInputs: 0
+  horizontalAngle: 50
+  horizontalStep: 5
+  inputsAmount: 1
   outputsAmount: 3
 --- !u!4 &211617261 stripped
 Transform:
@@ -2042,7 +2040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1904359a0c2a1624794066789fec74fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carAI: {fileID: 211617254}
 --- !u!135 &277046705
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2516,7 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1904359a0c2a1624794066789fec74fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carAI: {fileID: 211617254}
 --- !u!4 &357893640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135480120554540, guid: f24cfa7ea7c5c764dad9dddadf04cde2, type: 3}
@@ -17541,12 +17537,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carAI: {fileID: 211617254}
-  initialPopulation: 85
+  initialPopulation: 45
   mutationChance: 0.054999999701976776
   fitnessMultiplier: 10
-  bestAgentSelection: 8
-  worstAgentSelection: 3
-  numberToCrossover: 39
+  bestAgentSelection: 6
+  worstAgentSelection: 2
+  numberToCrossover: 33
   crossoverChance: 0.5
   currentGeneration: 0
   currentGenome: 0
@@ -18856,7 +18852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1904359a0c2a1624794066789fec74fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carAI: {fileID: 211617254}
 --- !u!4 &1613068061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4531595924625074, guid: 55e3ebb26a70a8c458d618b9d0cf5971, type: 3}
@@ -19309,7 +19304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1904359a0c2a1624794066789fec74fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carAI: {fileID: 211617254}
 --- !u!82 &1807646866 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3969810522296706745, guid: d64711048e24a7b4aa3b7dcd7ac961b9, type: 3}

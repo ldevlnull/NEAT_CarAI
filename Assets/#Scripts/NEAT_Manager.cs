@@ -25,16 +25,14 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
     [Header("Public View")] 
     [SerializeField] private int currentGeneration = 1;
-    [SerializeField] private int currentGenome = 1;
+    [SerializeField] protected int currentGenome = 1;
     [SerializeField] private double bestFitness;
 
     private readonly List<int> _genesPool = new List<int>();
     private int _naturallySelected;
 
-    private NeuralNetwork[] _population;
-
-    private NeuralNetwork lastBestNeuralNetwork;
-
+    protected NeuralNetwork[] population;
+    
     private void Start()
     {
         GUIHelper.AddToDisplay("Best fitness", () => bestFitness);
@@ -46,8 +44,8 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
     private void CreatePopulation()
     {
-        _population = new NeuralNetwork[initialPopulation];
-        RandomizePopulation(_population, 0);
+        population = new NeuralNetwork[initialPopulation];
+        RandomizePopulation(population, 0);
         ResetToCurrentGenome();
     }
 
@@ -61,18 +59,18 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         }
     }
 
-    private void ResetToCurrentGenome()
+    protected void ResetToCurrentGenome()
     {
-        carAI.ResetWithNeuralNetwork(_population[currentGenome]);
+        carAI.ResetWithNeuralNetwork(population[currentGenome]);
     }
 
-    public void Death(double fitness)
+    public virtual void Death(double fitness)
     {
         UpdateBestFitness(fitness);
 
-        if (currentGenome < _population.Length - 1)
+        if (currentGenome < population.Length - 1)
         {
-            _population[currentGenome++].Fitness = fitness;
+            population[currentGenome++].Fitness = fitness;
             ResetToCurrentGenome();
         }
         else
@@ -86,9 +84,9 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         bestFitness = (fitness > bestFitness) ? fitness : bestFitness;
     }
 
-    private void Repopulate()
+    protected void Repopulate()
     {
-        SerializationHelper.SerializeStats(currentGeneration, _population, ref _generatedStatsNameFile);
+        SerializationHelper.SerializeStats(currentGeneration, population, ref _generatedStatsNameFile);
         _genesPool.Clear();
         currentGeneration++;
         _naturallySelected = 0;
@@ -98,7 +96,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         Crossover(newPopulation);
         Mutate(newPopulation);
         RandomizePopulation(newPopulation, _naturallySelected);
-        _population = newPopulation;
+        population = newPopulation;
         currentGenome = 0;
         ResetToCurrentGenome();
     }
@@ -152,7 +150,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
                 var doCrossover = Random.Range(0f, 1f) < crossoverChance;
                 foreach (var child in children)
                 {
-                    child.Weights[w] = _population[doCrossover ? firstParentIndex : secondParentIndex].Weights[w];
+                    child.Weights[w] = population[doCrossover ? firstParentIndex : secondParentIndex].Weights[w];
                 }
             }
             
@@ -161,7 +159,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
                 var doCrossover = Random.Range(0f, 1f) < crossoverChance;
                 foreach (var child in children)
                 {
-                    child.Biases[b] = _population[doCrossover ? firstParentIndex : secondParentIndex].Biases[b];
+                    child.Biases[b] = population[doCrossover ? firstParentIndex : secondParentIndex].Biases[b];
                 }
             }
 
@@ -177,10 +175,10 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
         var newPopulation = new NeuralNetwork[initialPopulation];
         for (var i = 0; i < bestAgentSelection; i++)
         {
-            newPopulation[_naturallySelected] = _population[i].Clone() as NeuralNetwork;
+            newPopulation[_naturallySelected] = population[i].Clone() as NeuralNetwork;
             newPopulation[_naturallySelected++].Fitness = 0;
 
-            var f = Mathf.RoundToInt((float)_population[i].Fitness * fitnessMultiplier);
+            var f = Mathf.RoundToInt((float)population[i].Fitness * fitnessMultiplier);
 
             for (var j = 0; j < f; j++)
             {
@@ -190,10 +188,10 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
         for (var i = 0; i < worstAgentSelection; i++)
         {
-            var last = _population.Length - 1;
+            var last = population.Length - 1;
             last -= i;
 
-            var f = Mathf.RoundToInt((float)_population[last].Fitness * fitnessMultiplier);
+            var f = Mathf.RoundToInt((float)population[last].Fitness * fitnessMultiplier);
 
             for (var j = 0; j < f; j++)
             {
@@ -206,7 +204,7 @@ public class NEAT_Manager : MonoBehaviour, IConfigurable
 
     private void SortPopulation()
     {
-        Array.Sort(_population, (n1, n2) => decimal.Compare((decimal) n2.Fitness, (decimal) n1.Fitness));
+        Array.Sort(population, (n1, n2) => decimal.Compare((decimal) n2.Fitness, (decimal) n1.Fitness));
     }
 
     public void Configure(Dictionary<string, string> configMap)

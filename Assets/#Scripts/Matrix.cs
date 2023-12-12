@@ -78,6 +78,15 @@ public class Matrix
         return r;
     }
 
+    public static Matrix operator -(Matrix a, Matrix b)
+    {
+        var r = new Matrix(a.RowsCount, a.ColsCount);
+        for (var rowI = 0; rowI < r.RowsCount; rowI++)
+        for (var colJ = 0; colJ < r.ColsCount; colJ++)
+            r[rowI, colJ] = a[rowI, colJ] - b[rowI, colJ];
+        return r;
+    }
+
     public Matrix PointwiseTanh()
     {
         var r = new Matrix(RowsCount, ColsCount);
