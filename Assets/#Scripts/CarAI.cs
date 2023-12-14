@@ -66,6 +66,9 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     private static readonly Dictionary<SensorType, Func<double>> SensorReadActionByTypeResolver =
         new Dictionary<SensorType, Func<double>>();
+    
+    private static int roadLayerMask = 1 << 9;
+    private static int excludeCarMask = ~(1 << 8);
 
     [Header("Control")] 
     [SerializeField] private bool manualControl;
@@ -86,6 +89,7 @@ public class CarAI : MonoBehaviour, IConfigurable
     private int _currentCheckpoint = 0;
     private double _globalFitness;
     private double _cachedFitness;
+    private double _cachedGoneDistance;
     private double _runningTime;
     private double _avgSpeed;
     private double _goneDistance;
@@ -106,13 +110,13 @@ public class CarAI : MonoBehaviour, IConfigurable
 
     public int inputsAmount;
     public int outputsAmount = 3;
-
+    
     // acceleration, steering, handbrake
     public Func<double, double>[] ActivationsFunctions { get; } =
     {
         Math.Tanh,
-        Math.Tanh,
-        x => 1 / (1 + Math.Exp(-x))
+        Math.Tanh
+        //, x => 1 / (1 + Math.Exp(-x))
     };
 
     internal readonly Action<string, CarAI> checkSurface = (tagName, carAI) =>
@@ -248,7 +252,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         _runningTime += Time.deltaTime;
         
         ComputeFitness();
-        ComputeBehaviourScore();
+        // ComputeBehaviourScore();
         Checkpoint();
         KillIfReachesTimeLimit();
 
@@ -304,18 +308,23 @@ public class CarAI : MonoBehaviour, IConfigurable
     private static RaycastHit FindRoadEdge(Transform sensorTransform, RaycastHit edgeHit)
     {
         var initRotation = sensorTransform.rotation;
-        const float step = -0.2f;
+        const float step = -0.1f;
         const float maxAngleX = 90;
         const float maxI = maxAngleX * (-1 / step);
         for (var i = 0; i < maxI; i++)
         {
-            if (sensorTransform.rotation.x > maxAngleX)
-                break;
+            // if (sensorTransform.rotation.x > maxAngleX)
+            //     break;
             sensorTransform.Rotate(step, 0, 0);
-            if (!Physics.Raycast(sensorTransform.position, sensorTransform.forward, out var hit))
+            if (!Physics.Raycast(sensorTransform.position, sensorTransform.forward, out var hit, Mathf.Infinity, excludeCarMask))
+            {
                 continue;
+            }
+            
             if (!HitsRoad(hit))
+            {
                 break;
+            }
 
             edgeHit = hit;
         }
@@ -338,10 +347,10 @@ public class CarAI : MonoBehaviour, IConfigurable
     {
         acceleration = controlUpdate[0];
         steering = controlUpdate[1];
-        handbrake = controlUpdate[2];
+        // handbrake = controlUpdate[2];
         Accelerate();
         Steer();
-        PutHandbrake();
+        // PutHandbrake();
     }
 
     private void Accelerate()
@@ -370,15 +379,17 @@ public class CarAI : MonoBehaviour, IConfigurable
         var destination = _checkpoints[_currentCheckpoint].position;
         var curPosition = transform.position;
         _goneDistance = Vector3.Distance(_lastPosition, destination) - Vector3.Distance(curPosition, destination);
-        _avgSpeed = _goneDistance / _runningTime;
+        _avgSpeed = 10 * (_goneDistance + _cachedGoneDistance) / _runningTime;
 
         _globalFitness = (_goneDistance * goneDistanceWeight) +
                          (_avgSpeed * avgSpeedWeight)
                          + _currentCheckpoint * passedCheckpointsWeight
                          + _cachedFitness;
 
-        if (!_isNeuralNetworkImported && !manualControl && _globalFitness >= optimalFitness &&
-            _globalFitness % optimalFitness < 0.1)
+        if (!_isNeuralNetworkImported 
+            && !manualControl 
+            && _globalFitness >= optimalFitness
+            && _globalFitness % optimalFitness < 0.1)
         {
             Debug.Log("Saving net due to optimal fitness!");
             SerializationHelper.SerializeNeuralNetwork(_network, _globalFitness);
@@ -408,6 +419,7 @@ public class CarAI : MonoBehaviour, IConfigurable
             }
 
             _cachedFitness = _globalFitness;
+            _cachedGoneDistance = _goneDistance;
             _currentCheckpoint++;
             _lastPosition = transform.position;
             if (_currentCheckpoint + 3 < _checkpoints.Length)
@@ -456,6 +468,7 @@ public class CarAI : MonoBehaviour, IConfigurable
         _goneDistance = 0f;
         _currentCheckpoint = 0;
         _cachedFitness = 0f;
+        _cachedGoneDistance = 0f;
         _fitnessSinceLastCheck = 0f;
         _lastPosition = _initPosition;
 
